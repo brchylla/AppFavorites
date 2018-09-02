@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<!--<script src="https://code.angularjs.org/1.4.9/angular.js"></script>
+<script src="https://code.angularjs.org/1.4.9/angular-resource.js"></script>
+<script src="https://code.angularjs.org/1.4.9/angular-route.js"></script>-->
+<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controller.js"></script>
+<script src="/js/modal-basic.ts"></script>
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Apps</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body ng-controller="appLinkController">
+    <div class="container">
+        <div class="row" align="center">
+            <h3>My Favorite Apps</h3>
+            <button size="24">Add New App</button>
+            <div class="card" style="width: 18rem;" ng-repeat="appLink in appLinks">
+                <div class="card-body col-6" ng-if="appLink.isOpen" ng-style="{'background-color':'{{appLink.color}}'}">
+                    <h5 class="card-title">{{appLink.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{appLink.description}}</h6>
+                    <a href="{{appLink.link}}" class="card-link">Go to Application</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#" ng-click="removeAppLink(appLink.name)">Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-view></div>
+</body>
+</html>
