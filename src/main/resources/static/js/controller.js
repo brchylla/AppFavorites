@@ -18,27 +18,28 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
         });
     }
 
-    // function creates a matrix-like table using open app links passed into it
-    function createTable(openAppLinks) {
-        // the count of open app links
-        var numLinks = openAppLinks.length;
-        // set number of rows in table to ceiling integer of square root of link count
-        var rowCount = Math.ceil(Math.sqrt(numLinks));
-        // set number of columns in table to ceiling integer of link count divided by row count
-        var colCount = Math.ceil(numLinks / rowCount);
+    // function creates a matrix-like table using array passed into it
+    // each element of the array will correspond to a cell of the table
+    function createTable(items) {
+        // the count of items
+        var itemCount = items.length;
+        // set number of rows in table to ceiling integer of square root of item count
+        var rowCount = Math.ceil(Math.sqrt(itemCount));
+        // set number of columns in table to ceiling integer of item count divided by row count
+        var colCount = Math.ceil(itemCount / rowCount);
         // allocate all rows in table based on column count
         for (var row = 0; row < rowCount; row++) {
             $scope.table[row] = Array(colCount);
         }
-        // assign open app links to all table cells (using row count and column count)
+        // assign items to all table cells (using row count and column count)
         // i serves as the index of app links
-        for (var i = 0; i < numLinks; i++) {
+        for (var i = 0; i < itemCount; i++) {
             // the index of the row
             var rowIndex = Math.floor(i / colCount);
             // the index of the column
             var colIndex = i % colCount;
             // assign app link with current index to table cell with current row & column indices
-            $scope.table[rowIndex][colIndex] = openAppLinks[i];
+            $scope.table[rowIndex][colIndex] = items[i];
         }
         console.log('table done');
     }
