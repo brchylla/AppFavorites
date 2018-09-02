@@ -24,9 +24,31 @@ public class AppLinkController {
         return alService.findAppLinkByName(name);
     }
 
-    @RequestMapping(value="/getActiveAppLinks", method=RequestMethod.GET)
-    public List<AppLink> getActiveAppLinks() {
-        return alService.findAllActiveAppLinks();
+    @RequestMapping(value="/getOpenAppLinks", method=RequestMethod.GET)
+    public List<AppLink> getOpenAppLinks() {
+        return alService.findAllOpenAppLinks();
+    }
+
+    @RequestMapping(value="/getClosedAppLinks", method=RequestMethod.GET)
+    public List<AppLink> getClosedAppLinks() {
+        return alService.findAllClosedAppLinks();
+    }
+
+    @RequestMapping(value="/getAllAppLinks", method=RequestMethod.GET)
+    public List<AppLink> getAllAppLinks() {
+        return alService.findAllAppLinks();
+    }
+
+    @RequestMapping(value="/removeAppLink", method=RequestMethod.GET)
+    public List<AppLink> removeAppLink(@RequestParam(value="name") String name) {
+        alService.closeAppLink(name);
+        return alService.findAllAppLinks();
+    }
+
+    @RequestMapping(value="/addAppLink", method=RequestMethod.GET)
+    public List<AppLink> addAppLink(@RequestParam(value="name") String name) {
+        alService.openAppLink(name);
+        return alService.findAllAppLinks();
     }
 
 }

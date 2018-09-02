@@ -19,7 +19,7 @@ public interface AppLinkRepository extends MongoRepository<AppLink, String> {
      * Search for all app links with given active status
      * @return              All app links with given active status
      */
-    List<AppLink> findByIsActive(boolean isActive);
+    List<AppLink> findByIsOpen(boolean isActive);
 
     /**
      * Search for all app links in program

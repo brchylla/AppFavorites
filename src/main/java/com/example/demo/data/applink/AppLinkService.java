@@ -3,6 +3,9 @@ package com.example.demo.data.applink;
 import java.net.MalformedURLException;
 import java.util.List;
 
+/**
+ * Created by ben chylla on 9/1/18.
+ */
 public interface AppLinkService {
     AppLinkRepository getRepository();
 
@@ -22,18 +25,30 @@ public interface AppLinkService {
      * Search for list of all app links currently active
      * @return              All active app links
      */
-    List<AppLink> findAllActiveAppLinks();
+    List<AppLink> findAllOpenAppLinks();
 
     /**
      * Search for list of all app links currently inactive
      * @return              All inactive app links
      */
-    List<AppLink> findAllInactiveAppLinks();
+    List<AppLink> findAllClosedAppLinks();
 
     /**
      * Search for list of all app links in program
      * @return              All app links
      */
     List<AppLink> findAllAppLinks();
+
+    /**
+     * Close app link with given name
+     * @param name          The name of the app link to be removed
+     */
+    void closeAppLink(String name);
+
+    /**
+     * Open app link with given name
+     * @param name          The name of the app to be added
+     */
+    void openAppLink(String name);
 
 }
