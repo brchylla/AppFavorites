@@ -31,10 +31,10 @@
             <h3>My Favorite Apps</h3>
             <button size="24">Add New App</button>
             <table border="1">
-                <tr ng-repeat="row in table">
-                    <td ng-repeat="appLink in row">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body col-6" ng-if="appLink.isOpen" ng-style="{'background-color':'{{appLink.color}}'}">
+                <tr data-ng-repeat="row in table">
+                    <td data-ng-repeat="appLink in row">
+                        <div class="card" style="width: 18rem;" ng-if="appLink.name != 'Do Not Open'">
+                            <div class="card-body col-6" ng-style="{'background-color':'{{appLink.color}}'}">
                                 <h5 class="card-title">{{appLink.name}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{appLink.description}}</h6>
                                 <a href="{{appLink.link}}" class="card-link">Go to Application</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,7 +62,7 @@
                         <h4 class="modal-title">Add New App</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="card" style="width: 18rem;" ng-repeat="appLink in closedAppLinks">
+                        <div class="card" ng-repeat="appLink in closedAppLinks">
                             <div class="card-body col-6" ng-style="{'background-color':'{{appLink.color}}'}">
                                 <h5 class="card-title">{{appLink.name}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{appLink.description}}</h6>

@@ -23,8 +23,8 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
     function createTable(items) {
         // the count of items
         var itemCount = items.length;
-        // set number of rows in table to ceiling integer of square root of item count
-        var rowCount = Math.ceil(Math.sqrt(itemCount));
+        // set number of rows in table to rounded integer of square root of item count
+        var rowCount = Math.round(Math.sqrt(itemCount));
         // set number of columns in table to ceiling integer of item count divided by row count
         var colCount = Math.ceil(itemCount / rowCount);
         // allocate all rows in table based on column count
@@ -40,6 +40,12 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
             var colIndex = i % colCount;
             // assign app link with current index to table cell with current row & column indices
             $scope.table[rowIndex][colIndex] = items[i];
+        }
+        // BUG FIX: fill any undefined items in final row with blank links
+        for (var j = 0; j < colCount; j++) {
+            if (typeof $scope.table[rowCount-1][j] == 'undefined') {
+                $scope.table[rowCount-1][j] = { name: 'Do Not Open' };
+            }
         }
         console.log('table done');
     }
