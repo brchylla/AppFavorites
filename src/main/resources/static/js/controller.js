@@ -1,17 +1,31 @@
 app.controller('appLinkController', ['$scope', '$http', '$window', function($scope, $http, $window) {
-    /* initialize & clear scope arrays for app links */
-    $scope.appLinks = [];
-    /* initialize table of app links based on defaults or previous session */
+    /* initialize controller & all app links based on defaults or previous session */
+    initController();
+    /* initialize table of open app links based on defaults or previous session */
     initTable();
 
-    function initTable() {
+    function initController() {
+        /* initialize & clear scope arrays for app links */
+        $scope.appLinks = [];
         $http.get('/getAllAppLinks')
         .success(function(data) {
-            // expects array of all app links in program
+            /* expects array of all app links in program */
             $scope.appLinks = data;
         })
         .error(function() {
             console.log('Failure to initialize table of app links');
+        });
+    }
+
+    function initTable() {
+        $scope.table = [[]];
+        $http.get('/getAllOpenAppLinks')
+        .success(function(data) {
+            /* expects array of all opened app links in program */
+            
+        })
+        .error(function() {
+
         });
     }
 
