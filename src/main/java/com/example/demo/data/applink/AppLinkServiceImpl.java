@@ -51,7 +51,7 @@ public class AppLinkServiceImpl implements AppLinkService {
         alRepo.save(new AppLink("Wolfram Alpha", "Calculator", "Orange", true, new URL("http://m.wolframalpha.com/")));
         alRepo.save(new AppLink("Weather", "Weather", "SkyBlue", true, new URL("https://weather.com/")));
         alRepo.save(new AppLink("SpotHero", "Parking", "RoyalBlue", true, new URL("https://spothero.com/")));
-        alRepo.save(new AppLink("Wikipedia", "Encyclopedia", "Grey", true, new URL("https://www.wikipedia.org/")));
+        alRepo.save(new AppLink("Wikipedia", "Encyclopedia", "Silver", true, new URL("https://www.wikipedia.org/")));
         alRepo.save(new AppLink("UW Credit Union", "Banking", "OrangeRed", true, new URL("https://www.uwcu.org/")));
         alRepo.save(new AppLink("Yelp", "Consumer Reviews", "Salmon", true, new URL("https://www.yelp.com/")));
         alRepo.save(new AppLink("Indeed", "Jobs", "Aquamarine", true, new URL("https://www.indeed.com/")));

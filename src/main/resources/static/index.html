@@ -65,10 +65,10 @@
                     <tr data-ng-repeat="row in table">
                         <td data-ng-repeat="appLink in row">
                             <div class="card" style="width: 18rem;" ng-if="appLink.name != 'Do Not Open'">
-                                <div class="card-body col-6" ng-style="{'background-color':'{{appLink.color}}'}">
+                                <div class="card-body col-6" ng-style="getAppLinkStyle(appLink.color)">
                                     <h5 class="card-title">{{appLink.name}}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{appLink.description}}</h6>
-                                    <a href="{{appLink.link}}" class="card-link">Go to Application</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="{{appLink.link}}" target="_blank" class="card-link">Go to Application</a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="#" ng-click="removeAppLink(appLink.name)">Remove</a>
                                 </div>
                             </div>

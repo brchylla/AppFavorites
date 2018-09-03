@@ -90,4 +90,9 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
         });
     }
 
+    // function used to generate CSS style for app links
+    $scope.getAppLinkStyle = function(color) {
+        return {'background-color': color};
+    }
+
 }]);
