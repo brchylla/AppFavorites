@@ -20,35 +20,17 @@ public interface AppLinkService {
      * @return              The app link with the given name
      */
     AppLink findAppLinkByName(String name);
-
+    
     /**
-     * Search for list of all app links currently active
-     * @return              All active app links
+     * Search for list of default links in program
+     * @return				App links with default status
      */
-    List<AppLink> findAllOpenAppLinks();
-
-    /**
-     * Search for list of all app links currently inactive
-     * @return              All inactive app links
-     */
-    List<AppLink> findAllClosedAppLinks();
+    List<AppLink> findDefaultAppLinks();
 
     /**
      * Search for list of all app links in program
      * @return              All app links
      */
     List<AppLink> findAllAppLinks();
-
-    /**
-     * Close app link with given name
-     * @param name          The name of the app link to be removed
-     */
-    void closeAppLink(String name);
-
-    /**
-     * Open app link with given name
-     * @param name          The name of the app to be added
-     */
-    void openAppLink(String name);
 
 }

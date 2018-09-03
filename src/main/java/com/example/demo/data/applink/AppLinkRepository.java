@@ -16,10 +16,10 @@ public interface AppLinkRepository extends MongoRepository<AppLink, String> {
     AppLink findByName(String name); // find app link using its name
     
     /**
-     * Search for all app links with given active status
-     * @return              All app links with given active status
+     * Search for all app links with given default status (default or non-default)
+     * @return              All app links with given default status (default or non-default)
      */
-    List<AppLink> findByIsOpen(boolean isActive);
+    List<AppLink> findByDefaultStatus(boolean isDefault);
 
     /**
      * Search for all app links in program
