@@ -1,11 +1,12 @@
 app.controller('appLinkController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     // initialize table of open app links based on defaults or previous session
+	var login = 'user1';
     initTable();
 
     // get all open app links from server to initialize table
     function initTable() {
-        $scope.table = [[]];
-        $http.get('/getOpenAppLinks')
+    	$scope.table = [[]];
+    	$http.get('/getOpenAppLinks?login=' + login)
         .success(function(data) {
             // expects array of all opened app links
             // use array to create matrix-like table
@@ -21,7 +22,7 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
     // function creates a matrix-like table using array passed into it
     // each element of the array will correspond to a cell of the table
     function createTable(items) {
-        // the count of items
+    	// the count of items
         var itemCount = items.length;
         // set number of rows in table to rounded integer of square root of item count
         var rowCount = Math.round(Math.sqrt(itemCount));
@@ -52,7 +53,7 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
 
     // updates list of closed app links
     function getClosedAppLinks() {
-        $http.get('/getClosedAppLinks')
+        $http.get('/getClosedAppLinks?login=' + login)
         .success(function(data) {
             // expects array of all closed app links
             $scope.closedAppLinks = data;
@@ -63,30 +64,30 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
     }
 
     // function for removing app link
-    $scope.removeAppLink = function(name) {
+    $scope.removeAppLink = function(appName) {
         // update app links on server side by ordering link with given name to be closed
-        $http.get('/removeAppLink?name=' + name)
+        $http.get('/removeAppLink?appName=' + appName + '&login=' + login)
         .success(function(data) {
-            // expects app link of given name to be closed on server side
-            // repopulate table after updating information
+            // expects app link of given name to be removed from user view
+            // repopulate table after updating app links in user view
             initTable();
         })
         .error(function() {
-            console.log('Failure to close ' + name + 'app link');
+            console.log('Failure to close ' + appName + 'app link');
         });
     }
 
     // function for adding app link
-    $scope.addAppLink = function(name) {
+    $scope.addAppLink = function(appName) {
         // update app links on server side by ordering link with given name to be opened
-        $http.get('/addAppLink?name=' + name)
+        $http.get('/addAppLink?appName=' + appName + '&login=' + login)
         .success(function(data) {
-            // expects app link of given name to be opened
-            // repopulate table after updating information
+            // expects app link of given name to be added to user view
+            // repopulate table after updating app links in user view
             initTable();
         })
         .error(function() {
-            console.log('Failure to open ' + name + 'app link');
+            console.log('Failure to open ' + appName + 'app link');
         });
     }
 

@@ -18,19 +18,11 @@ public class AppLink {
     private boolean defaultStatus; // whether the link is active by default
     private URL link; // link of app
 
-    public boolean isOpen; // whether the app link is open (visible on home page)
-
     public AppLink(String name, String description, String color, boolean defaultStatus, URL link) {
         this.name = name;
         this.description = description;
         this.color = color;
         this.defaultStatus = defaultStatus;
-        if (this.defaultStatus) {
-            this.isOpen = true;
-        }
-        else {
-            this.isOpen = false;
-        }
         this.link = link;
     }
 
@@ -66,16 +58,13 @@ public class AppLink {
         this.color = color;
     }
 
-    public void open() {
-        this.isOpen = true;
-    }
-
-    public void close() {
-        this.isOpen = false;
-    }
-
     public void setLink(URL link) {
         this.link = link;
+    }
+    
+    @Override
+    public String toString() {
+    	return name;
     }
 
 }

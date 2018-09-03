@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.data.applink.*;
+import com.example.demo.data.userapps.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +27,8 @@ import java.util.List;
 public class Application implements CommandLineRunner {
     @Autowired
     AppLinkService alService;
+    @Autowired
+    UserAppsService uaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -37,6 +40,11 @@ public class Application implements CommandLineRunner {
             // if there are no app links (first time usage), initialize them
             if (allAppLinks == null || allAppLinks.isEmpty()) {
                 alService.initialize();
+            }
+            // if there are no users (first time usage), initialize them
+            List<UserApps> allUsers = uaService.getAllUsers();
+            if (allUsers == null || allUsers.isEmpty()) {
+            	uaService.initialize();
             }
         } catch( Exception e ) {
             e.printStackTrace();

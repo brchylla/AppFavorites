@@ -65,21 +65,13 @@ public class AppLinkServiceImpl implements AppLinkService {
     public AppLink findAppLinkByName(String name) {
         return alRepo.findByName(name);
     }
-
+    
     /**
-     * Search for list of all app links currently active
-     * @return              All active app links
+     * Search for list of default links in program
+     * @return				App links with default status
      */
-    public List<AppLink> findAllOpenAppLinks() {
-        return alRepo.findByIsOpen(true);
-    }
-
-     /**
-     * Search for list of all app links currently inactive
-     * @return              All inactive app links
-     */
-    public List<AppLink> findAllClosedAppLinks() {
-        return alRepo.findByIsOpen(false);
+    public List<AppLink> findDefaultAppLinks() {
+    	return alRepo.findByDefaultStatus(true);
     }
 
     /**
@@ -88,26 +80,6 @@ public class AppLinkServiceImpl implements AppLinkService {
      */
     public List<AppLink> findAllAppLinks() {
         return alRepo.findAll();
-    }
-
-    /**
-     * Close app link with given name
-     * @param name          The name of the app link to be removed
-     */
-    public void closeAppLink(String name) {
-        AppLink appLink = alRepo.findByName(name);
-        appLink.close();
-        alRepo.save(appLink);
-    }
-
-    /**
-     * Open app link with given name
-     * @param name          The name of the app to be added
-     */
-    public void openAppLink(String name) {
-        AppLink appLink = alRepo.findByName(name);
-        appLink.open();
-        alRepo.save(appLink);
     }
 
 }
