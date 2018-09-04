@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.data.applink.AppLink;
+import com.example.demo.data.userapps.UserApps;
 import com.example.demo.data.userapps.UserAppsService;
 
 import java.util.List;
@@ -19,6 +20,11 @@ public class UserAppsController {
 	
 	@Autowired
 	UserAppsService uaService;
+	
+	@RequestMapping(value="/getUser", method=RequestMethod.GET)
+	public UserApps getUserApps(@RequestParam(value="login") String login) {
+		return uaService.getUser(login);
+	}
 	
 	/**
 	 * Return list of app links open for this user
