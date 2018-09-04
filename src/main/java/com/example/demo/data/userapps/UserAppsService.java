@@ -13,6 +13,13 @@ public interface UserAppsService {
 	void initialize();
 	
 	/**
+	 * Get user with corresponding login
+	 * @param login		The user login
+	 * @return			The user with the given login
+	 */
+	UserApps getUser(String login);
+	
+	/**
 	 * Get all users
 	 * @return	All users
 	 */

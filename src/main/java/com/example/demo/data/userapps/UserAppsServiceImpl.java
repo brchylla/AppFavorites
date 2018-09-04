@@ -51,6 +51,16 @@ public class UserAppsServiceImpl implements UserAppsService {
 		uaRepo.save(new UserApps("user1", "glbrcpass", namesOfDefaultApps));
 		uaRepo.save(new UserApps("user2", "glbrcpass", namesOfDefaultApps));
 		uaRepo.save(new UserApps("user3", "glbrcpass", namesOfDefaultApps));
+		uaRepo.save(new UserApps("default", "glbrcpass", namesOfDefaultApps));
+	}
+	
+	/**
+	 * Get user with corresponding login
+	 * @param login		The user login
+	 * @return			The user with the given login
+	 */
+	public UserApps getUser(String login) {
+		return uaRepo.findByLogin(login);
 	}
 	
 	/**

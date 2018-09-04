@@ -1,0 +1,22 @@
+.loginModalButton {
+    position: absolute;
+    right: 0px;
+    width: 350px;
+}
+
+.appLink {
+    padding: 10px;
+}
+
+.appLinkName {
+    font-weight: bold;
+    font-size: 18;
+}
+
+.appLinkDescription {
+    color: grey;
+}
+
+table {
+    width: 100%;
+}

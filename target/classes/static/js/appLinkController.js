@@ -1,12 +1,15 @@
 app.controller('appLinkController', ['$scope', '$http', '$window', function($scope, $http, $window) {
-    // initialize table of open app links based on defaults or previous session
-	var login = 'user1';
-    initTable();
-
-    // get all open app links from server to initialize table
+    
+	// receives user login broadcast via LoginService
+	$scope.$on('getAppLinks', function (event, data) {
+		$scope.login = data.login;
+		initTable();
+	});
+    
+	// get all open app links from server to initialize table
     function initTable() {
     	$scope.table = [[]];
-    	$http.get('/getOpenAppLinks?login=' + login)
+    	$http.get('/getOpenAppLinks?login=' + $scope.login)
         .success(function(data) {
             // expects array of all opened app links
             // use array to create matrix-like table
@@ -53,7 +56,7 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
 
     // updates list of closed app links
     function getClosedAppLinks() {
-        $http.get('/getClosedAppLinks?login=' + login)
+        $http.get('/getClosedAppLinks?login=' + $scope.login)
         .success(function(data) {
             // expects array of all closed app links
             $scope.closedAppLinks = data;
@@ -66,7 +69,7 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
     // function for removing app link
     $scope.removeAppLink = function(appName) {
         // update app links on server side by ordering link with given name to be closed
-        $http.get('/removeAppLink?appName=' + appName + '&login=' + login)
+        $http.get('/removeAppLink?appName=' + appName + '&login=' + $scope.login)
         .success(function(data) {
             // expects app link of given name to be removed from user view
             // repopulate table after updating app links in user view
@@ -80,7 +83,7 @@ app.controller('appLinkController', ['$scope', '$http', '$window', function($sco
     // function for adding app link
     $scope.addAppLink = function(appName) {
         // update app links on server side by ordering link with given name to be opened
-        $http.get('/addAppLink?appName=' + appName + '&login=' + login)
+        $http.get('/addAppLink?appName=' + appName + '&login=' + $scope.login)
         .success(function(data) {
             // expects app link of given name to be added to user view
             // repopulate table after updating app links in user view
