@@ -4,6 +4,12 @@
     width: 350px;
 }
 
+.right {
+    position: absolute;
+    right: 0px;
+    width: 350px;
+}
+
 .appLink {
     padding: 10px;
 }
