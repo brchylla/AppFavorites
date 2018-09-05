@@ -6,15 +6,12 @@
 <script src="/webjars/angularjs/1.4.9/angular.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
 <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
-<script src="/js/app.js?sept3"></script>
-<script src="/js/appLinkController.js?sept3"></script>
-<script src="/js/loginController.js?sept3"></script>
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/app.js?sept3"></script>
+<script src="/js/appLinkController.js?sept3"></script>
+<script src="/js/loginController.js?sept3"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +30,11 @@
                         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="loginmodal-container">
-                                    <h1>Login to Your Account</h1><br>
+                                    <font style="color:white;weight:bold;">Login:</font>&nbsp;&nbsp;
                                     <input type="text" name="user" placeholder="Username" ng-model="loginInput">
                                     <input type="password" name="pass" placeholder="Password" ng-model="passwordInput">
-                                    <button name="login" class="login loginmodal-submit" ng-click="attemptLogin()">Login</button>
+                                    <button name="login" class="login loginmodal-submit" ng-click="attemptLogin()" data-toggle="modal" data-target="#login-modal">Login</button>
+                                    <button data-toggle="modal" data-target="#login-modal">Close</button>
                                 </div>
                             </div>
                         </div>
